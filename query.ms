@@ -1,1 +1,1 @@
-db.insert({parent:1}, {id:"a1", name:"asd"})
+db.find({id:1, name:3, $or[code:{$gt:123}, age:14], pupa: 42, lupa: 41})

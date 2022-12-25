@@ -3,8 +3,7 @@
 void yyerror (char *s);
 %}
 %%
-"db"		return DB;
-\.			return DOT;
+"db\."		return DB;
 "find"		return FIND;
 "insert"	return INSERT;
 "delete"	return DELETE;
