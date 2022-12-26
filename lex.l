@@ -24,12 +24,13 @@ void yyerror (char *s);
 \]			return CLSQBRACE;
 :			return COLON;
 \$			return DOLLAR;
-\"			{yylval.string = yytext; return QUOTE;}
+\"			return QUOTE;
 ,			return COMMA;
 True		return TRUE;
 False		return FALSE;
 [a-zA-Z][a-zA-Z_0-9]*		{yylval.string = strdup(yytext); return STRING;}
-[-]?([0-9]*[.])?[0-9]+	{yylval.num = atoi(yytext); return NUMBER;}
+[-]?([0-9]+)?\.[0-9]+		{yylval.fnum = strtod(yytext, NULL); return FLOAT_NUMBER;}
+[-]?[0-9]+					{yylval.num = atoi(yytext); return INT_NUMBER;}
 [ \t\n]				;
 .					{ECHO; yyerror ("unexpected character");}
 
